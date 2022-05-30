@@ -1,0 +1,59 @@
+<div class="mar">
+    <h1> {{( usuarios.user_id) ? 'Editar' :'Nuevo'}} Usuario</h1>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+
+        <div fxFlex="50" fxLayout="column">
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
+                <mat-form-field fxFlex="100" fxLayout.xs="column">
+                    <mat-label>Rut</mat-label>
+                    <input matInput [(ngModel)]="usuarios.dni " type="number" required>
+                </mat-form-field>
+                <span> - </span> 
+                <mat-form-field fxFlex="100">
+                    <mat-label>Digito Verificador</mat-label>
+                    <input matInput  [(ngModel)]="usuarios.dv" type="text" required>
+                </mat-form-field>
+
+            </div>
+
+
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="usuarios.first_name" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input matInput [(ngModel)]="usuarios.last_name" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Genero</mat-label>
+                <mat-select required [(ngModel)]="usuarios.gender">
+                    <mat-option *ngFor="let gender of gender" [value]="gender.id"> {{gender.desc}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Telefono</mat-label>
+                <input matInput [(ngModel)]="usuarios.phone_number" type="text" required>
+            </mat-form-field>
+
+
+            <div fxLayout>
+                <button mat-raised-button color="primary" (click)="guardar()">
+                    <mat-icon>save</mat-icon>{{( usuarios.user_id) ? 'Actualizar' :'Guardar'}}
+                </button>
+                <span class="spacer" ></span>
+                <button *ngIf="usuarios.user_id"
+                        mat-raised-button
+                        (click)="borrarUsuarios()"
+                        color="warn">
+                    <mat-icon>remove</mat-icon> Borrar
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

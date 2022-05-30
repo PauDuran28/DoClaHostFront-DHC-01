@@ -1,0 +1,12 @@
+<h1>¿Esta seguro de realizar esta acción?</h1>
+<hr>
+<p>
+    Esta a punto de borrar Producto: {{data.Producto}
+    <br>
+    ¿Deseea Continuar?
+</p>
+
+<div>
+    <button mat-button color="warn" (click)="borrar()">Si, Borrar</button>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+</div>

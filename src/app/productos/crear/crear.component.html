@@ -1,0 +1,88 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/productos/listado" routerLinkActive="active"><i class="fas fa-regular fa-grid"></i>Listar Productos</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="col-md-4 offset-md-4">
+    <h1> {{( producto.id_producto) ? 'Editar' :'Nuevo'}} Producto</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                        <input type="text" name="codigo" [(ngModel)]="producto.codigo" class="form-control" placeholder="Codigo" autofocus required>
+                </div>
+
+                <div class="form-group">
+                        <input name="nombre_producto" type="text" [(ngModel)]="producto.nombre_producto" class="form-control"placeholder="Nombre Producto" required>
+                </div>
+
+                    <div class="form-group">
+              
+                    <input name="familia" type="text"  class="form-control" [(ngModel)]="producto.familia" placeholder="familia" required>
+               
+            </div>
+                <div class="form-group">
+                    <mat-label>Fecha Vencimiento</mat-label>
+                   <input matInput name="fecha_vencimiento"  class="form-control" [(ngModel)]="producto.fecha_vencimiento" placeholder="Fecha Vencimiento"type="date" required>
+               
+                    
+            </div>
+                <div class="form-group">
+               
+                    <input name="tipo_producto" placeholder="Tipo Producto" class="form-control" [(ngModel)]="producto.tipo_producto" type="text" required>
+              
+            </div>
+                <div class="form-group">
+                
+                    <input name="precio" type="number" placeholder="Precio" class="form-control" [(ngModel)]="producto.precio"required>
+            
+            </div>
+                <div class="form-group">
+             
+                    
+                    <input name="stock" type="number" placeholder="Stock" class="form-control" [(ngModel)]="producto.stock" required>
+               
+            </div>
+                <div class="form-group">
+               
+                    <input name="stock_critico" placeholder="Stock Critico" class="form-control" [(ngModel)]="producto.stock_critico" type="number" required>
+         
+    
+                </div>
+                <button class="btn btn-success btn-block" (click)="edit? agregarProducto() : actualizarProducto()">
+                    guardar
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card card-body text-center">
+    
+      <h3>{{producto.id_producto}}. {{producto.nombre_producto == '' ? 'Nombre Producto' : producto.nombre_producto}}</h3>
+      <p>{{producto.codigo == 0 ? 'Codigo' : producto.codigo}}</p>
+      <p>{{producto.familia == '' ? 'Familia' : producto.familia}}</p>
+      <p>{{producto.fecha_vencimiento | date: 'dd-MM-yy'}}</p>
+      <p>{{producto.tipo_producto == '' ? 'Tipo Producto' : producto.tipo_producto}}</p>
+      <p>{{producto.precio == 0 ? 'Precio' : producto.precio}}</p>
+      <p>{{producto.stock == 0 ? 'Stock' : producto.stock}}</p>
+      <p>{{producto.stock_critico == 0 ? 'Stock Critico' : producto.stock_critico}}</p>
+    </div>
+  </div>

@@ -1,0 +1,69 @@
+<mat-card class="mt-5">
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10 mt-2">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Busqueda</mat-label>
+                <input type="text" placeholder="Usuario" aria-label="Busqueda" matInput [(ngModel)]="termino"
+                    [matAutocomplete]="auto" (input)="buscando()">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                    (optionSelected)="opcionSeleccionada($event)">
+                    <mat-option *ngFor="let Usuario of usuario" [value]="usuario">
+                        {{Usuario.first_name}}
+                    </mat-option>
+                    <mat-option value="" *ngIf=usuario.length===0 && termino.trim().length>0">
+                        No existen registros que coincidan con : {{termino}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <a class="col-1 float-end" routerLink="/usuarios/agregar">
+                <button mat-button color="primary" mat-icon-button matTooltip="Agregar Usuario">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </a>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="dni">
+                    <th mat-header-cell *matHeaderCellDef> Dni </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dni}}-{{element.dv}} </td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+                <ng-container matColumnDef="first_name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="gender">
+                    <th mat-header-cell *matHeaderCellDef> Genero </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                </ng-container>
+                <ng-container matColumnDef="phone_number">
+                    <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
+                </ng-container>
+                <ng-container matColumnDef="update">
+                    <th mat-header-cell *matHeaderCellDef> Update </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="accent">
+                            <mat-icon class="mat-18">system_update</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef> Delete </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="warn">
+                            <mat-icon class="mat-18">delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+
+</mat-card>
