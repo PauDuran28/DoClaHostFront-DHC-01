@@ -28,13 +28,11 @@ export class ListarComponent implements OnInit {
  { }
 
   ngOnInit(){
-    
-
-    return this.productoService.getProducto().subscribe((data)=>{
+     return this.productoService.getProducto().subscribe((data)=>{
       console.log(data);
       this.data=data;
       this.producto=this.data.producto;
-      console.log(data);
+      console.log(this.producto);
     }
     )
   }
