@@ -23,25 +23,25 @@
     </div>
   </nav>
  
-<div class="col-md-3" *ngFor="let productos of producto">
+<div class="col-md-3" *ngFor="let pdcto of producto">
     <div class="card text-center">
       <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-        <p>Id Producto: {{productos.id_producto}}</p>
-        <button class="btn btn-danger" (click)="borrarProducto(productos.id_producto)">
+        <p>Id Producto: {{pdcto.id_producto}}</p>
+        <button class="btn btn-danger" (click)="borrarProducto(pdcto.id_producto)">
           <i class="far fa-trash-alt"></i>
 
         </button>
       </div>
       <div class="card-body" >
-        <p>Codigo:{{productos.codigo}}</p>
-        <p>Nombre Producto:{{productos.nombre_producto}}</p>
-        <p>Familia:{{productos.familia}}</p>
-        <p>Fecha vencimiento: {{productos.fecha_vencimiento| date: 'dd-MM-yy' }}</p>
-        <p>Tipo Producto:{{productos.tipo_producto}}</p>
-        <p>Precio : ${{productos.precio}}</p>
-        <p> Stock: {{productos.stock}}</p>
-        <p>Stock Critico: {{productos.stock_critico}}</p>
-        <a [routerLink]="['/productos/editar', productos.id_producto]" class="btn btn-info btn-block">
+        <p>Codigo:{{pdcto.codigo}}</p>
+        <p>Nombre Producto:{{pdcto.nombre_producto}}</p>
+        <p>Familia:{{pdcto.familia}}</p>
+        <p>Fecha vencimiento: {{pdcto.fecha_vencimiento| date: 'dd-MM-yy' }}</p>
+        <p>Tipo Producto:{{pdcto.tipo_producto}}</p>
+        <p>Precio : ${{pdcto.precio}}</p>
+        <p> Stock: {{pdcto.stock}}</p>
+        <p>Stock Critico: {{pdcto.stock_critico}}</p>
+        <a [routerLink]="['/productos/editar', pdcto.id_producto]" class="btn btn-info btn-block">
           EDITAR PRODUCTO
         </a>
       </div>

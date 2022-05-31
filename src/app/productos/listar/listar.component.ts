@@ -14,10 +14,12 @@ import { FilterPipe } from './filter.pipe';
 })
 export class ListarComponent implements OnInit {
   
+  
   resultbusqueda = '';
- 
+  data: any;
   @HostBinding('class') classes = 'row';
-  producto :any =[];
+ 
+  producto :any;
   termino: string = '';
   productoSeleccionado: Producto | undefined;
   
@@ -26,26 +28,24 @@ export class ListarComponent implements OnInit {
  { }
 
   ngOnInit(){
-    this.getProducto();
+    
+
+    return this.productoService.getProducto().subscribe((data)=>{
+      console.log(data);
+      this.data=data;
+      this.producto=this.data.producto;
+      console.log(data);
+    }
+    )
   }
 
-  getProducto() { 
-    this.productoService.getProducto()
-    .subscribe(
-      res => {
-       
-        this.producto = res;
-      },
-      err => console.error(err)
-    );
-}
-
+ 
 borrarProducto(id_producto: number){
   this.productoService.borrarProducto(id_producto)
   .subscribe(
     res=> {
       console.log(res);
-      this.getProducto();
+      this.producto.getProducto();
     },
     err => console.error(err)
   )
@@ -66,3 +66,5 @@ transform(value: any, arg: any): any {
 }
 
 }
+
+
