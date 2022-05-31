@@ -5,7 +5,7 @@ import { PrincipalModule } from './principal/principal.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 // import { AuthGuard } from './auth/guards/auth.guard';
 
-const route: Routes= [
+const routes: Routes= [
 
   {
     path:'auth',
@@ -39,7 +39,7 @@ const route: Routes= [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(route)
+    RouterModule.forRoot(routes)
   ],
   exports:[
     RouterModule

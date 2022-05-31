@@ -17,7 +17,7 @@ export class ListarComponent implements OnInit {
   resultbusqueda = '';
  
   @HostBinding('class') classes = 'row';
-  producto:any=[];
+  producto :any =[];
   termino: string = '';
   productoSeleccionado: Producto | undefined;
   
@@ -33,6 +33,7 @@ export class ListarComponent implements OnInit {
     this.productoService.getProducto()
     .subscribe(
       res => {
+       
         this.producto = res;
       },
       err => console.error(err)
