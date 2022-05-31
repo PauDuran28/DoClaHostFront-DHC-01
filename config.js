@@ -13,4 +13,8 @@ async function open(sql, binds,autoCommit){
     return result;
 }
 
+
+
+
+
 exports.Open = open;

@@ -39,8 +39,7 @@ export class ListarComponent implements OnInit {
 
  
 borrarProducto(id_producto: number){
-  this.productoService.borrarProducto(id_producto)
-  .subscribe(
+  this.productoService.borrarProducto(id_producto).subscribe(
     res=> {
       console.log(res);
       this.producto.getProducto();
