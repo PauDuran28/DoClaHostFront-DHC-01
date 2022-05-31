@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-reservar',
-  templateUrl: './reservar.component.html',
+  selector: 'app-reserva',
+  templateUrl: './reserva.component.html',
   styles: [
   ]
 })
-export class ReservarComponent implements OnInit {
+export class ReservaComponent implements OnInit {
 
   constructor() { }
 

@@ -10,11 +10,11 @@
       <ul class="navbar-nav ml-auto">
       
         <li class="nav-item">
-          <a class="nav-link" routerLink="/productos/agregar" routerLinkActive="active"><i class="fas fa-plus-circle"></i>ADD Producto</a>
+          <a class="nav-link" routerLink="/reserva/agregar" routerLinkActive="active"><i class="fas fa-plus-circle"></i>ADD Reserva</a>
         </li>
       
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Codigo" aria-label="Search" name="resultbusqueda"[(ngModel)]="resultbusqueda">
+            <input class="form-control mr-sm-2" type="search" placeholder="Rut" aria-label="Search" name="resultbusqueda"[(ngModel)]="resultbusqueda">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
           </form>
       </ul>
@@ -23,28 +23,29 @@
     </div>
   </nav>
  
-<div class="col-md-3" *ngFor="let pdcto of producto">
+<div class="col-md-3" *ngFor="let res of reserva">
     <div class="card text-center">
       <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-        <p>Id Producto: {{pdcto.id_producto}}</p>
-        <button class="btn btn-danger" (click)="borrarProducto(pdcto.id_producto)">
+        <p>Id Producto: {{res.id_reserva}}</p>
+        <button class="btn btn-danger" (click)="borrarReserva(res.id_reserva)">
           <i class="far fa-trash-alt"></i>
 
         </button>
       </div>
       <div class="card-body" >
-        <p>Codigo:{{pdcto.codigo}}</p>
-        <p>Nombre Producto:{{pdcto.nombre_producto}}</p>
-        <p>Familia:{{pdcto.familia}}</p>
-        <p>Fecha vencimiento: {{pdcto.fecha_vencimiento| date: 'dd-MM-yyyy' }}</p>
-        <p>Tipo Producto:{{pdcto.tipo_producto}}</p>
-        <p>Precio : ${{pdcto.precio}}</p>
-        <p> Stock: {{pdcto.stock}}</p>
-        <p>Stock Critico: {{pdcto.stock_critico}}</p>
-        <a [routerLink]="['/productos/editar', pdcto.id_producto]" class="btn btn-info btn-block">
+        <p>Rut: {{res.rut}}</p>
+        <p>Email: {{res.email}}</p>
+        <p>Nombre: {{res.nombre}}</p>
+        <p>Telefono: {{res.telefono}}</p>
+        <p>Fecha inicio: {{res.fecha_inicio| date: 'dd-MM-yyyy' }}</p>
+        <p>Fecha salida: {{res.fecha_salida| date: 'dd-MM-yyyy' }}</p>
+        <p> cantidad personas: {{res.cantidad_personas}}</p>
+        <p>Tipo Habitacion: {{res.tipo_habitacion}}</p>
+        <a [routerLink]="['/reserva/editar', res.id_reserva]" class="btn btn-info btn-block">
           EDITAR PRODUCTO
         </a>
       </div>
       </div>
     </div>
  
+    

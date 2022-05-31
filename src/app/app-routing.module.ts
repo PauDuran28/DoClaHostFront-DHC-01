@@ -26,6 +26,11 @@ const routes: Routes= [
     path:'pedido',
     loadChildren :()=>import('./pedido/pedido.module').then( m => m.PedidoModule)
   },
+
+  {
+    path:'reserva',
+    loadChildren :()=>import('./reserva/reserva.module').then( m => m.ReservaModule)
+  },
   {
     path:'404',
     component: ErrorPageComponent
