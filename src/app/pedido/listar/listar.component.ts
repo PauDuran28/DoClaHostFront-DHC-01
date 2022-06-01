@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostBinding } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pedido} from '../interfaces/pedido.interfaces'
@@ -10,53 +10,53 @@ import { PedidoService } from '../service/pedido.service';
   styleUrls: ['./listar.component.css']
 })
 export class ListarComponent implements OnInit {
+  resultbusqueda = '';
+  data: any;
+  @HostBinding('class') classes = 'row';
+ 
+  pedido :any;
+  termino: string = '';
+  pedidoSeleccionado: Pedido | undefined;
+  
 
-  pedido:any=[];
+   constructor(private pedidoService:PedidoService)
+ { }
+
+  ngOnInit(){
+     return this.pedidoService.getPedido().subscribe((data)=>{
+      console.log(data);
+      this.data=data;
+      this.pedido=this.data.pedido;
+      console.log(this.pedido);
+    }
+    )
+  }
 
  
-
-  displayedColumns: string[] = ['id_pedido','rut_proveedor','nombre_proveedor','fecha_emision','total'];
-  dataSource:any = new MatTableDataSource();
-  
-    termino: string = '';
-    pedidos: Pedido[]=[];
-    pedidoSeleccionado: Pedido | undefined;
-
-  constructor(
-    private pedidoService:PedidoService
-  ) { }
-  
-  ngOnInit(): void {
-    this.pedidoService.getPedido().subscribe(pedido =>{
-      console.log(pedido,"pedido");
-      this.pedido = pedido;
-      this.dataSource = new MatTableDataSource(this.pedido);
-    });
-  }
-
-
-
-  
-buscando() {
-
-  this.pedidoService.getSugerencias( this.termino.trim() )
-    .subscribe( pedido => this.pedido = pedido );
-
-}
-
-opcionSeleccionada( event: MatAutocompleteSelectedEvent ) {
-
-  if(!event.option.value) {
-    this.pedidoSeleccionado = undefined;
-    return;
-  }
-
-  const pedido:Pedido  = event.option.value;
-  this.termino = pedido.nombre_proveedor;
-
-  this.pedidoService.getPedidoPorId( pedido.id_pedido! )
-    .subscribe(pedido => this.pedidoSeleccionado = pedido );
+borrarPedido(id_pedido: number){
+  this.pedidoService.borrarPedido(id_pedido).subscribe(
+    res=> {
+      console.log(res);
+      this.pedido.getPedido();
+    },
+    err => console.error(err)
+  )
 }
 
 
-  } 
+
+//buscar
+transform(value: any, arg: any): any {
+  if (arg === '' || arg.length < 3) return value;
+  const resultbusqueda = [];
+  for (const pedido of value) {
+    if (pedido.rut_proveedor.indexOf(arg) > -1) {
+      resultbusqueda.push(pedido);
+    };
+  };
+  return resultbusqueda;
+}
+
+}
+
+

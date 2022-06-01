@@ -26,8 +26,8 @@ export class ReservaService {
     getSugerencias(termino: string){
       return this.http.get(`${this.baseUrl}/reserva?q=${termino}&_limit=10`);
     }
-    agregarReserva(reservas: Reserva){
-      return this.http.post(`${this.baseUrl}/reserva`,reservas);
+    agregarReserva(reserva: Reserva){
+      return this.http.post(`${this.baseUrl}/reserva`,reserva);
      }
     actualizarReserva( id_reserva: string |number, actualizarReserva: Reserva): Observable<Reserva> {
       return this.http.put<Reserva>(`${this.baseUrl}/reserva/${id_reserva}`, actualizarReserva);

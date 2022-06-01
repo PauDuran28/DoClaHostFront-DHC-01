@@ -1,0 +1,75 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/reserva/listado" routerLinkActive="active"><i class="fas fa-regular fa-grid"></i>Listar Reserva</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="col-md-5 offset-md-2">
+    <h1> {{( reserva.id_reserva) ? 'Editar' :'Nuevo'}} Reserva</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <input type="text" name="id Reserva" [(ngModel)]="reserva.id_reserva" class="form-control" placeholder="Id Reserva" autofocus required>
+                </div>
+
+                <div class="form-group">
+                    <mat-label>Fecha Inicio</mat-label>
+                    <input matInput  name="fecha_inicio" type="date" [(ngModel)]="reserva.fecha_inicio" class="form-control"placeholder="Fecha inicio" required>
+                </div>
+
+                    <div class="form-group">
+                        <mat-label>Fecha Salida</mat-label>
+                    <input matInput  name="fecha_salida" type="date"  class="form-control" [(ngModel)]="reserva.fecha_salida" placeholder="Fecha Salida" required>
+               
+            </div>
+                <div class="form-group">
+                    
+                   <input name="cant_personas"  class="form-control" [(ngModel)]="reserva.cant_personas" placeholder="Cantidad Personas"type="text" required>
+               
+                    
+            </div>
+                <div class="form-group">
+               
+                    <input name="tipo_habitacion" placeholder="Tipo habitacion" class="form-control" [(ngModel)]="reserva.tipo_habitacion" type="text" required>
+              
+            </div>
+                <div class="form-group">
+                
+                    <input name="rut" type="text" placeholder="RUT" class="form-control" [(ngModel)]="reserva.rut"required>
+            
+            </div>
+                <div class="form-group">
+             
+                    
+                    <input name="nombre" type="text" placeholder="Nombre" class="form-control" [(ngModel)]="reserva.nombre" required>
+               
+            </div>
+                <div class="form-group">
+                    <input name="email" placeholder="Email" class="form-control" [(ngModel)]="reserva.email" type="email" required>
+                </div>
+                <div class="form-group">
+                    <input name="telefono" placeholder="Telefono" class="form-control" [(ngModel)]="reserva.telefono" type="number" required>
+                </div>
+                <button class="btn btn-success btn-block" (click)="edit? agregarReserva() : actualizarReserva()">
+                    guardar
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
