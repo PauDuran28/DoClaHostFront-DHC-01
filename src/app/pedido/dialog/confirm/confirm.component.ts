@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Pedido } from '../../interfaces/pedido.interfaces';
+import { MatDialog,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Pedido,Detalle } from '../../interfaces/pedido.interfaces';
 
 
 @Component({
@@ -8,11 +8,16 @@ import { Pedido } from '../../interfaces/pedido.interfaces';
   templateUrl: './confirm.component.html',
 })
 export class ConfirmComponent implements OnInit {
+  codigo!: number;
+  cantidad!:number;
+  precio!:number;
+  sub_total!:number;
+  descripcion!:string;
 
-  constructor(private dialogRef: MatDialogRef<ConfirmComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Pedido) { }
+  constructor(public dialogRef: MatDialogRef<ConfirmComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Detalle) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 

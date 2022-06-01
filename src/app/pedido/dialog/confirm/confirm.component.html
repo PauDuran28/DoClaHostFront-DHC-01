@@ -1,12 +1,32 @@
-<h1>¿Esta seguro de realizar esta acción?</h1>
-<hr>
-<p>
-    Esta a punto de borrar pedido: {{data.id_pedido}}
-    <br>
-    ¿Deseea Continuar?
-</p>
-
 <div>
-    <button mat-button color="warn" (click)="borrar()">Si, Borrar</button>
-    <button mat-button (click)="cancelar()">Cancelar</button>
+    <h1 mat-dialog-title>Artículo</h1>
+    <div mat-dialog-content>
+        <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.codigo" type="number" placeholder="Ingrese codigo">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.descripcion" type="text" placeholder="Ingrese descripcion">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.precio" type="number" placeholder="Ingrese precio">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.cantidad" type="number" placeholder="Ingrese cantidad">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.sub_total" type="number" placeholder="s">
+            </mat-form-field>
+
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="cancelar()">Cancelar</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
+    </div>
 </div>

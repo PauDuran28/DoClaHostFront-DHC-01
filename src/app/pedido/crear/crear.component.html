@@ -33,75 +33,43 @@
           </mat-form-field>
 
          
+          <div style=" margin: auto; width: 80%">
+            <table mat-table [dataSource]="ds" class="mat-elevation-z8" #tabla1 style="width: 90%;margin-bottom: 1rem;">
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let detalle"> {{detalle.codigo}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let detalle"> {{detalle.descripcion}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="precio">
+                <th mat-header-cell *matHeaderCellDef> Precio </th>
+                <td mat-cell *matCellDef="let detalle"> {{detalle.precio}} </td>
+              </ng-container>
 
-              
-              <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
-
-                <ng-container matColumnDef="codigo">
-                  <th mat-header-cell *matHeaderCellDef> Código </th>
-                  <td mat-cell *matCellDef="let articulo"> {{articulo.codigo}} </td>
-                </ng-container>
-              
-                <ng-container matColumnDef="descripcion">
-                  <th mat-header-cell *matHeaderCellDef> Descripción </th>
-                  <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
-                </ng-container>
-                <ng-container matColumnDef="cantidad">
-                  <th mat-header-cell *matHeaderCellDef> cantidad </th>
-                  <td mat-cell *matCellDef="let articulo"> {{articulo.cantidad}} </td>
-                </ng-container>
-              
-                <ng-container matColumnDef="precio">
-                  <th mat-header-cell *matHeaderCellDef> Precio </th>
-                  <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="sub_total">
-                  <th mat-header-cell *matHeaderCellDef> sub total </th>
-                  <td mat-cell *matCellDef="let articulo"> {{articulo.sub_total}} </td>
-                </ng-container>
-              
-                <ng-container matColumnDef="borrar">
-                  <th mat-header-cell *matHeaderCellDef> Borrar? </th>
-                  <td mat-cell *matCellDef="let j = index;">
-                    <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
-                      Borra?
-                    </button>
-                  </td>
-                </ng-container>
-              
-                <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-                <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
-              </table>
-              <div class="contenedor">
-              
-                <mat-form-field>
-                  <input matInput [(ngModel)]="pedido.codigo" type="number" placeholder="Ingrese código">
-                </mat-form-field>
-              
-                <mat-form-field>
-                  <input matInput [(ngModel)]="pedido.descripcion" type="text" placeholder="Ingrese descripción">
-                </mat-form-field>
-              
-                <mat-form-field>
-                  <input matInput [(ngModel)]="pedido.precio" type="number" placeholder="Ingrese precio">
-                </mat-form-field>
-              
-                <button mat-raised-button color="primary" (click)="agregar()">Agregar</button>
-              
-              </div>
-  
-              <div fxLayout>
-                <button mat-raised-button color="primary" (click)="guardar()">
-                    <mat-icon>save</mat-icon>{{( pedido.id_pedido) ? 'Actualizar' :'Guardar'}}
-                </button>
-                <span class="spacer" ></span>
-                <button *ngIf="pedido.id_pedido"
-                        mat-raised-button
-                        (click)="borrarPedido()"
-                        color="warn">
-                    <mat-icon>remove</mat-icon> Borrar
-                </button>
+              <ng-container matColumnDef="cantidad">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let detalle"> {{detalle.Cantidad}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sub_total">
+                <th mat-header-cell *matHeaderCellDef> subTotal </th>
+                <td mat-cell *matCellDef="let detalle"> {{detalle.sub_total}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="borrar">
+                <th mat-header-cell *matHeaderCellDef> Borra? </th>
+                <td mat-cell *matCellDef="let j = index;">
+                  <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+                    Borra?
+                  </button>
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+              <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+            </table>
+            <button mat-raised-button (click)="abrirDialogo()">Agregar artículo</button>
           </div>
-      </div>
-  </div>

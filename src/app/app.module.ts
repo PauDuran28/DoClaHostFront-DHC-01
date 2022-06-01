@@ -8,15 +8,18 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmComponent } from './usuarios/dialog/confirm/confirm.component';
-
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConfirmComponent,
+    ConfirmComponent
 
   ],
   imports: [
@@ -25,7 +28,12 @@ import { ConfirmComponent } from './usuarios/dialog/confirm/confirm.component';
     BrowserAnimationsModule,
     RouterModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
