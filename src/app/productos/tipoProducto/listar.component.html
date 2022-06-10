@@ -1,0 +1,61 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/productos/listado" routerLinkActive="active"><i class="fas fa-regular fa-grid"></i>Listar Productos</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container mt-5">
+  <div class="row">
+      <div class="col-4">
+          <form>
+             
+              <div class="form-group">
+                 
+                  <input  [(ngModel)]="nombre_categoria" name="nombre_categoria" placeholder="nombre Categoria" type="text" class="form-control" >
+              </div>
+            
+              <button (click)="addCategoria()" type="submit" class="btn btn-primary btn-block">Guardar Categoria</button>
+              <button (click)="updateCategoria()" type="submit" class="btn btn-warning btn-block">Guardar Cambios</button>
+
+
+          </form>
+      </div>
+
+      <div class="col-8">
+          <div class="row">
+
+              <div *ngFor="let cat of Categorias" class="col-4">
+                  <div class="card bg-light mb-3">
+                      <div class="card-header">Id Categoria: {{cat.ID_CATEGORIA}}</div>
+                      <div class="card-body">
+                       
+                          <h5 class="card-title">Nombre Categoria: {{cat.NOMBRE_CATEGORIA}}</h5>
+                   
+                        
+                      </div>
+                      <div class="card-footer">
+                          <button type="submit"
+                             (click)="getCategorias(cat.ID_CATEGORIA,cat.NOMBRE_CATEGORIA)"
+                              class="btn btn-warning btn-block">Edit Categoria</button>
+                          <button (click)="deleteCategoria(cat.ID_CATEGORIA)" type="submit"  class="btn btn-danger btn-block">Delete Categoria</button>
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>

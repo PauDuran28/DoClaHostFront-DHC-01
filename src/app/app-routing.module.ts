@@ -31,6 +31,9 @@ const routes: Routes= [
     path:'reserva',
     loadChildren :()=>import('./reserva/reserva.module').then( m => m.ReservaModule)
   },
+
+  
+  
   {
     path:'404',
     component: ErrorPageComponent

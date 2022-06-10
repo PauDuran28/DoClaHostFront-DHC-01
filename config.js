@@ -1,5 +1,6 @@
 const oracledb = require('oracledb');
 
+
 db ={
     user:'HOSTALCLARITA',
     password: 'dhc123456',
@@ -15,6 +16,5 @@ async function open(sql, binds,autoCommit){
 
 
 
+exports.Open = open; 
 
-
-exports.Open = open;

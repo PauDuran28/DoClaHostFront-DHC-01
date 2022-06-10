@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Pipe({
   name: 'filter'
@@ -16,5 +17,21 @@ export class FilterPipe implements PipeTransform {
         return resultbusqueda;
       }
 
+   
+
+     ///   var datePipe = new DatePipe("en-ES");
+      //   value = datePipe.transform(value, 'dd/MM/yyyy');
+        // return value;
+    // }
+
+     //formatDate(date: Date): string{
+      //const day= date.getDate();
+     // const month = date.getMonth()+1;
+      //const year = date.getFullYear();
+    
+      //return `${year}-${month}-${day}`;
+      
+    //}
+  
 
 }

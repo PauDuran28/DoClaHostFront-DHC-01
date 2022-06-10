@@ -73,3 +73,17 @@
     </div>
 </div>
 
+<div class="col-md-4">
+    <div class="card card-body text-center">
+    
+      <h3>{{reserva.id_reserva}}. {{reserva.nombre == '' ? 'Razon Social' : reserva.nombre}}</h3>
+      <p>{{reserva.fecha_inicio | date: 'dd-MM-yy' }}</p>
+      <p>{{reserva.fecha_salida | date: 'dd-MM-yy' }}</p>
+      <p>{{reserva.cant_personas == 0 ? 'Cant Personas' : reserva.cant_personas}}</p>
+      <p>{{reserva.tipo_habitacion == '' ? 'Tipo Habitacion' : reserva.tipo_habitacion}}</p>
+      <p>{{reserva.rut == '' ? 'Rut' : reserva.rut}}</p>
+      <p>{{reserva.nombre == '' ? 'Nombre' : reserva.nombre}}</p>
+      <p>{{reserva.email == '' ? 'Email' : reserva.email}}</p>
+      <p>{{reserva.telefono == 0 ? 'Telefono' : reserva.telefono}}</p>
+    </div>
+  </div>

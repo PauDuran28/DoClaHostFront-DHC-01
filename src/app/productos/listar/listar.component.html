@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/productos/agregar" routerLinkActive="active"><i class="fas fa-plus-circle"></i>ADD Producto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/productos/listado/categoria" routerLinkActive="active"><i class="fas fa-plus-circle"></i>ADD Categoria</a>
+        </li>
       
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Codigo" aria-label="Search" name="resultbusqueda"[(ngModel)]="resultbusqueda">
@@ -23,25 +26,25 @@
     </div>
   </nav>
  
-<div class="col-md-3" *ngFor="let pdcto of producto">
+ <div class="col-md-3" *ngFor="let pdcto of productos">
     <div class="card text-center">
       <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-        <p>Id Producto: {{pdcto.id_producto}}</p>
-        <button class="btn btn-danger" (click)="borrarProducto(pdcto.id_producto)">
+        <p>Id Producto: {{pdcto.ID_PRODUCTO}}</p>
+        <button class="btn btn-danger" >
           <i class="far fa-trash-alt"></i>
 
         </button>
       </div>
-      <div class="card-body" >
-        <p>Codigo:{{pdcto.codigo}}</p>
-        <p>Nombre Producto:{{pdcto.nombre_producto}}</p>
-        <p>Familia:{{pdcto.familia}}</p>
-        <p>Fecha vencimiento: {{pdcto.fecha_vencimiento| date: 'dd-MM-yyyy' }}</p>
-        <p>Tipo Producto:{{pdcto.tipo_producto}}</p>
-        <p>Precio : ${{pdcto.precio}}</p>
-        <p> Stock: {{pdcto.stock}}</p>
-        <p>Stock Critico: {{pdcto.stock_critico}}</p>
-        <a [routerLink]="['/productos/editar', pdcto.id_producto]" class="btn btn-info btn-block">
+      <div class="card-body text-left">
+        <p>Codigo:{{pdcto.CODIGO}}</p>
+        <p>Nombre Producto:{{pdcto.NOMBRE_PRODUCTO}}</p>
+        <p>Familia:{{pdcto.FAMILIA}}</p>
+        <p>Fecha vencimiento: {{pdcto.FECHA_VENCIMIENTO| date: 'yyyy-MM-dd' }}</p>
+        <p>Tipo Producto:{{pdcto.TIPO_PRODUCTO}}</p>
+        <p>Precio : ${{pdcto.PRECIO}}</p>
+        <p>Stock: {{pdcto.STOCK}}</p>
+        <p>Stock Critico: {{pdcto.STOCK_CRITICO}}</p>
+        <a class="btn btn-info btn-block" [routerLink]="['/productos/editar', pdcto.ID_PRODUCTO]" >
           EDITAR PRODUCTO
         </a>
       </div>

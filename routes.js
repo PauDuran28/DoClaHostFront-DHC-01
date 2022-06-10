@@ -10,6 +10,8 @@ router.get('/', (req, res)=>{
 
 });
 
+
+
 //ingresar listar
 router.get('/producto', async (req, res)=>{
     const producto=[];
@@ -20,7 +22,7 @@ router.get('/producto', async (req, res)=>{
     console.log(producto);
     result.rows.map(product=>{
 
-        let userSchema ={
+        let productoSchema ={
             "ID_PRODUCTO":product[0],
             "CODIGO":product[1],
             "NOMBRE_PRODUCTO":product[2],
@@ -32,18 +34,66 @@ router.get('/producto', async (req, res)=>{
             "STOCK_CRITICO":product[8]
         }
 
-        producto.push(userSchema);
+        producto.push(productoSchema);
     });
     res.json({producto});
 });
 
 //update
-router.post('/producto', function (req, res) {
-    const producto = req.body.producto;
-    producto.push(producto);
 
-    return res.send('product has been added successfully');
-});
+router.post('/producto',
+function getProducto(req) {
+    const producto = {
+      ID_PRODUCTO: req.body.ID_PRODUCTO,
+      CODIGO: req.body.CODIGO,
+      NOMBRE_PRODUCTO: req.body.NOMBRE_PRODUCTO,
+      FAMILIA: req.body.FAMILIA,
+      FECHA_VENCIMIENTO: req.body.FECHA_VENCIMIENTO,
+      TIPO_PRODUCTO: req.body.TIPO_PRODUCTO,
+      PRECIO: req.body.PRECIO,
+      STOCK: req.body.STOCK,
+      STOCK_CRITICO: req.body.STOCK_CRITICO
+    };
+  
+    return producto;
+  }
+);
+
+  async function post(req, res, next) {
+    try {
+      let producto = getProducto(req);
+  
+      producto = await registro_producto.create(producto);
+  
+      res.status(200).json(producto);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+
+ 
+  async (req, res, next) => {
+          try {
+              let producto = getProducto(req);
+
+              producto.ID_PRODUCTO = parseInt(req.params.id, 10);
+
+              producto = await registro_producto.update(producto);
+
+              if (producto !== null) {
+                  res.status(200).json(producto);
+              } else {
+                  res.status(404).end();
+              }
+          } catch (err) {
+              next(err);
+          }
+      }
+  
+
+
 
 //reserva listar
 
@@ -91,7 +141,7 @@ router.get('/pedido', async (req, res)=>{
             "RUT_PROVEEDOR":ped[1],
             "NOMBRE_PROVEEDOR":ped[2],
             "FECHA_EMISION":ped[3],
-            "TOTAL":ped[4],
+            "TOTAL":ped[4]
          
         }
 
@@ -100,4 +150,7 @@ router.get('/pedido', async (req, res)=>{
     res.json({pedido});
 });
 
+
 module.exports= router;
+
+

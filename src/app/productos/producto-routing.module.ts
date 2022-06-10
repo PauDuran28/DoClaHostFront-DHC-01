@@ -5,6 +5,7 @@ import { BuscarComponent } from './buscar/buscar.component';
 import { CrearComponent } from './crear/crear.component';
 import { ListarComponent } from './listar/listar.component';
 import { ProductosComponent } from './productos/productos.component';
+import { CategoriaComponent } from './tipoProducto/categoria.component';
 
 const route: Routes= [
   {
@@ -34,9 +35,15 @@ const route: Routes= [
         component: ProductosComponent,
       },
       {
+        path: 'listado/categoria',
+        component: CategoriaComponent,
+      },
+      {
         path: '**',
         redirectTo: 'listado'
       },
+
+     
     ],
   },
 ];

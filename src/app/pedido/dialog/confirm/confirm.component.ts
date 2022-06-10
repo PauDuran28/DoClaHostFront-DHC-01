@@ -8,11 +8,7 @@ import { Pedido,Detalle } from '../../interfaces/pedido.interfaces';
   templateUrl: './confirm.component.html',
 })
 export class ConfirmComponent implements OnInit {
-  codigo!: number;
-  cantidad!:number;
-  precio!:number;
-  sub_total!:number;
-  descripcion!:string;
+
 
   constructor(public dialogRef: MatDialogRef<ConfirmComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Detalle) { }

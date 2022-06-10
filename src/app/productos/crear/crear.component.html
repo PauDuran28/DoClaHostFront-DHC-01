@@ -18,58 +18,66 @@
 
 
 <div class="col-md-5 offset-md-2">
-    <h1> {{( producto.id_producto) ? 'Editar' :'Nuevo'}} Producto</h1>
+    <h1 class="text-center"> {{( id_producto) ? 'Editar' :'Nuevo'}} Producto</h1>
 
     <div class="card">
         <div class="card-body">
-            <form>
+            <form class="col-md- offset-md-2">
               <div class="form-group">
-                <input type="text" name="id_producto"[(ngModel)]="producto.id_producto" class="form-control" placeholder="Codigo" autofocus required>
-        </div>
-                <div class="form-group">
-                        <input type="text" name="codigo" [(ngModel)]="producto.codigo" class="form-control" placeholder="Codigo" autofocus required>
-                </div>
+              <mat-form-field>
+                <mat-label>Codigo</mat-label>
+                <input name="codigo" matInput type="text" [(ngModel)]="codigo" class="form-control" placeholder="Codigo" autofocus required>
+              </mat-form-field>
+            </div>
+              <div class="form-group">
+              <mat-form-field >
+                <mat-label>nombre producto</mat-label>
+                <input name="nombre_producto" matInput type="text" [(ngModel)]="nombre_producto" class="form-control" placeholder="nombre producto" required>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field >
+                <mat-label>Familia</mat-label>
+                <input name="familia" matInput type="text" [(ngModel)]="familia" class="form-control" placeholder="familia" required>
+              </mat-form-field>
+            </div>
 
-                <div class="form-group">
-                        <input name="nombre_producto" type="text" [(ngModel)]="producto.nombre_producto" class="form-control"placeholder="Nombre Producto" required>
-                </div>
+          <mat-form-field>
+              <input matInput placeholder="Fecha Vencimiento" [matDatepicker]="fecha_vencimiento" name="fecha_vencimiento" ngModel #dateCtrl="ngModel" required readonly/>
+                <mat-datepicker-toggle [for]="fecha_vencimiento" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #fecha_vencimiento ></mat-datepicker>
+          </mat-form-field>
+              <form>
+              <div class="form-group" required aparencie="fill"> 
+                <select name="tipo_producto"(change)="CambiarCategoria($event)" class="form-control">
+                  <option class="text-center">---Select---</option>
+                  <option *ngFor="let categoria of CategoriaLista" [value]="categoria.NOMBRE_CATEGORIA">
+                    {{categoria.NOMBRE_CATEGORIA}}
+                  </option>
+                </select>
+              </div>
+              </form>
 
-                    <div class="form-group">
+              <div class="form-group">
+                <mat-form-field >
+                  <mat-label>Precio</mat-label>
+                  <input name="precio" matInput type="number" [(ngModel)]="precio" class="form-control"  required>
+                </mat-form-field>
+              </div>
               
-                    <input name="familia" type="text"  class="form-control" [(ngModel)]="producto.familia" placeholder="familia" required>
-               
-            </div>
-                <div class="form-group">
-                    <mat-label>Fecha Vencimiento</mat-label>
-                   <input matInput name="fecha_vencimiento"  class="form-control" [(ngModel)]="producto.fecha_vencimiento" placeholder="Fecha Vencimiento"type="date" required>
-               
-                    
-            </div>
-                <div class="form-group">
-               
-                    <input name="tipo_producto" placeholder="Tipo Producto" class="form-control" [(ngModel)]="producto.tipo_producto" type="text" required>
-              
-            </div>
-                <div class="form-group">
+              <div class="form-group">
+                <mat-form-field >
+                  <mat-label>Stock</mat-label>
+                  <input name="stock" matInput type="number" [(ngModel)]="stock" class="form-control"  required>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field >
+                  <mat-label>Stock Critico</mat-label>
+                  <input name="stock_critico" matInput type="number" [(ngModel)]="stock_critico" class="form-control"  required>
+                </mat-form-field>
+              </div>
                 
-                    <input name="precio" type="number" placeholder="Precio" class="form-control" [(ngModel)]="producto.precio"required>
-            
-            </div>
-                <div class="form-group">
-             
-                    
-                    <input name="stock" type="number" placeholder="Stock" class="form-control" [(ngModel)]="producto.stock" required>
-               
-            </div>
-                <div class="form-group">
-               
-                    <input name="stock_critico" placeholder="Stock Critico" class="form-control" [(ngModel)]="producto.stock_critico" type="number" required>
-         
-    
-                </div>
-                <button class="btn btn-success btn-block" (click)="edit? agregarProducto() : actualizarProducto()">
-                    guardar
-                </button>
             </form>
 
         </div>
@@ -77,15 +85,19 @@
 </div>
 
 <div class="col-md-4">
+  <h1 class="text-center">Previsualización creación de producto</h1>
     <div class="card card-body text-center">
-    
-      <h3>{{producto.id_producto}}. {{producto.nombre_producto == '' ? 'Nombre Producto' : producto.nombre_producto}}</h3>
-      <p>{{producto.codigo == 0 ? 'Codigo' : producto.codigo}}</p>
-      <p>{{producto.familia == '' ? 'Familia' : producto.familia}}</p>
-      <p>{{producto.fecha_vencimiento | date: 'dd-MM-yy'}}</p>
-      <p>{{producto.tipo_producto == '' ? 'Tipo Producto' : producto.tipo_producto}}</p>
-      <p>{{producto.precio == 0 ? 'Precio' : producto.precio}}</p>
-      <p>{{producto.stock == 0 ? 'Stock' : producto.stock}}</p>
-      <p>{{producto.stock_critico == 0 ? 'Stock Critico' : producto.stock_critico}}</p>
+     
+      <h3>{{id_producto}}. {{nombre_producto== '' ? 'Nombre Producto' : nombre_producto}}</h3>
+      <p>{{codigo== 0 ? 'Codigo' : codigo}}</p>
+      <p>{{familia == '' ? 'Familia' : familia}}</p>
+      <p>{{fecha_vencimiento}}</p>
+      <p>{{SelectedValue == 0 ? 'tipo producto' :  SelectedValue}}</p>
+      <p>{{precio == 0 ? 'Precio' : precio}}</p>
+      <p>{{stock == 0 ? 'Stock' : stock}}</p>
+      <p>{{stock_critico == 0 ? 'Stock Critico' : stock_critico}}</p>
     </div>
+    <button class="btn btn-success btn-block" (click)="edit? addProducto() : updateProducto()">
+      guardar
+  </button>
   </div>

@@ -59,7 +59,7 @@ export class CrearComponent implements OnInit {
   }
   agregarDetalle(det: Detalle){
     
-    this.datos.push(this.Detalle );
+    this.datos.push(this.Detalle);
     this.tabla1.renderRows();
   }
 
